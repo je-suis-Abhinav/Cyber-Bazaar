@@ -1,0 +1,15 @@
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', sans-serif;
+  --bg-primary: #050812;
+  --bg-secondary: #111827;
+  --surface: rgba(16, 25, 42, 0.88);
+  --surface-strong: rgba(24, 36, 58, 0.92);
+  --border: rgba(255, 255, 255, 0.08);
+  --text-primary: #e9edf7;
+  --text-secondary: #9fb2d2;
+  --accent-cyan: #00f2fe;
+  --accent-purple: #5b7bff;
+  --accent-pink: #ff88d9;
+  --shadow: 0 20px 80px rgba(0, 0, 0, 0.35);
+}

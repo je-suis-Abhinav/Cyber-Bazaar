@@ -1,0 +1,329 @@
+/* =========================
+   ORDERS PAGE
+========================= */
+
+.orders-page{
+    display:grid;
+    gap:24px;
+}
+
+.orders-grid{
+    display:grid;
+    gap:24px;
+}
+
+/* =========================
+   ORDER CARD
+========================= */
+
+.order-history-card{
+
+    padding:28px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+}
+
+.order-history-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(0,242,254,.45);
+
+    box-shadow:0 0 25px rgba(0,242,254,.12);
+}
+
+/* =========================
+   TOP
+========================= */
+
+.order-history-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+    margin-bottom:26px;
+}
+
+.order-history-top h3{
+
+    margin-bottom:6px;
+
+    color:#ffffff;
+
+    font-size:1.25rem;
+}
+
+.order-history-top span{
+
+    color:#9db2ce;
+
+    font-size:.92rem;
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.order-badges{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.status-badge,
+.payment-badge{
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    letter-spacing:.3px;
+
+    white-space:nowrap;
+}
+
+/* Order Status */
+
+.status-badge.pending{
+    background:#ffb02022;
+    color:#ffb020;
+}
+
+.status-badge.processing{
+    background:#3b82f622;
+    color:#60a5fa;
+}
+
+.status-badge.shipped{
+    background:#8b5cf622;
+    color:#b794f4;
+}
+
+.status-badge.delivered{
+    background:#00f2fe22;
+    color:#00f2fe;
+}
+
+.status-badge.cancelled{
+    background:#ef444422;
+    color:#ef4444;
+}
+
+/* Payment Status */
+
+.payment-badge.pending{
+    background:#ffb02022;
+    color:#ffb020;
+}
+
+.payment-badge.paid{
+    background:#22c55e22;
+    color:#22c55e;
+}
+
+.payment-badge.failed{
+    background:#ef444422;
+    color:#ef4444;
+}
+
+.payment-badge.refunded{
+    background:#3b82f622;
+    color:#60a5fa;
+}
+
+/* =========================
+   DETAILS GRID
+========================= */
+
+.order-history-body{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    margin-bottom:24px;
+}
+
+.order-detail{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.order-detail label{
+
+    color:#8da0bc;
+
+    font-size:.82rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+}
+
+.order-detail strong{
+
+    color:#00f2fe;
+
+    font-size:1.35rem;
+}
+
+.order-detail span{
+
+    color:#e5e7eb;
+
+    word-break:break-word;
+}
+
+/* =========================
+   ITEMS
+========================= */
+
+.order-items{
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding-top:22px;
+}
+
+.order-items h4{
+
+    margin-bottom:14px;
+
+    color:#ffffff;
+}
+
+.order-item-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.order-item-row:last-child{
+
+    border-bottom:none;
+}
+
+.order-item-row span{
+
+    color:#d6e2f0;
+}
+
+.order-item-row strong{
+
+    color:#00f2fe;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.orders-empty{
+
+    text-align:center;
+
+    padding:60px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.orders-empty h3{
+
+    margin-bottom:12px;
+}
+
+.orders-empty p{
+
+    color:#9db2ce;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .order-history-body{
+
+        grid-template-columns:1fr;
+    }
+
+    .order-history-top{
+
+        flex-direction:column;
+
+        gap:18px;
+    }
+
+    .order-badges{
+
+        width:100%;
+    }
+}
+
+@media(max-width:600px){
+
+    .order-item-row{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+    }
+
+    .status-badge,
+    .payment-badge{
+
+        font-size:.78rem;
+
+        padding:7px 12px;
+    }
+
+    .order-history-card{
+
+        padding:20px;
+    }
+}

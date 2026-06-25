@@ -1,0 +1,137 @@
+.profile-page{
+
+    max-width:900px;
+
+    margin:auto;
+
+    display:grid;
+
+    gap:24px;
+}
+
+.profile-card{
+
+    text-align:center;
+
+    padding:40px;
+}
+
+.profile-avatar{
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    margin-bottom:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:2.8rem;
+
+    font-weight:700;
+
+    color:#00f2fe;
+
+    background:rgba(0,242,254,.08);
+}
+
+.profile-info{
+
+    padding:28px;
+
+    display:grid;
+
+    gap:18px;
+}
+
+.profile-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:12px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.profile-row span{
+
+    color:#9db2ce;
+}
+
+.profile-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+}
+
+.stat-card{
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.stat-card h2{
+
+    color:#00f2fe;
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+}
+
+.profile-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:16px;
+
+    padding:24px;
+}
+.button-primary,
+.button-secondary{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.profile-actions .button-primary,
+.profile-actions .button-secondary{
+    min-width:170px;
+    height:52px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:0 24px;
+}
+@media(max-width:700px){
+
+    .profile-stats{
+
+        grid-template-columns:1fr;
+    }
+
+    .profile-actions{
+
+        flex-direction:column;
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "ecommerce-analytics",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.18.0",
+    "canvas-confetti": "^1.6.0",
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^0.528.0",
+    "react": "^18.3.1",
+    "react-countup": "^6.5.3",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.6.0",
+    "react-router-dom": "^7.15.1",
+    "recharts": "^2.8.0",
+    "socket.io-client": "^4.8.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.2",
+    "vite": "^5.4.1"
+  }
+}
