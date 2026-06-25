@@ -34,6 +34,9 @@ const io = new Server(server, {
 });
 app.set("io", io);
 io.on("connection", (socket) => {
-    socket.on("disconnect");
+    console.log("Client connected");
+    socket.on("disconnect", () => {
+        console.log("Client disconnected");
+    });
 });
 server.listen(PORT, () => {console.log(`Server running on port ${PORT}`);});
