@@ -21,7 +21,7 @@ app.use('/api/wishlist',wishlistRoutes);
 app.use('/api/upload',uploadRoutes);
 app.get('/', (req, res) => {res.send('Backend Running Successfully 🚀');});
 app.get('/api/profile', protect, (req, res) => {res.json({message: 'Protected Route Accessed',user: req.user});});
-const PORT = process.env.PORT || 5000;A
+const PORT = process.env.PORT || 5000;
 const bcrypt = require('bcryptjs');
 const http = require("http");
 const { Server } = require("socket.io");
