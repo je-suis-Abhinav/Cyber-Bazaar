@@ -44,8 +44,8 @@ const createOrder = async (req, res) => {
 
         io.emit("activity", {
             type: "ORDER_CREATED",
-            status:status,
-            message: `New order placed worth ₹${total}`,
+            status:"Pending",
+            message: `New order placed worth ₹${grandTotal}`,
             time: new Date(),
         });
 
