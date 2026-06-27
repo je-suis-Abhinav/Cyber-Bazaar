@@ -7,21 +7,50 @@ export const getProducts = async () => {
   return response.data;
 };
 
-export const createProduct = async (productData) => {
-  const response = await axios.post(API_URL, productData);
-  return response.data;
-};
-export const updateProductApi = async (id, productData) => {
-  const response = await axios.put(
-    `${API_URL}/${id}`,
-    productData
+export const createProduct = async (productData, token) => {
+  const response = await axios.post(
+    API_URL,
+    productData,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
   );
+
   return response.data;
 };
 
-export const deleteProductApi = async (id) => {
-  const response = await axios.delete(
-    `${API_URL}/${id}`
+export const updateProductApi = async (
+  id,
+  productData,
+  token
+) => {
+  const response = await axios.put(
+    `${API_URL}/${id}`,
+    productData,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
   );
+
+  return response.data;
+};
+
+export const deleteProductApi = async (
+  id,
+  token
+) => {
+  const response = await axios.delete(
+    `${API_URL}/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
   return response.data;
 };

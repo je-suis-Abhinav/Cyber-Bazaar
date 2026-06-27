@@ -318,7 +318,12 @@ const toggleWishlist = async (productId:string) => {
 
 const addProduct = async (product: Omit<Product, 'id'>) => {
       try {
-        const savedProduct = await createProduct(product);
+        const token = localStorage.getItem("token");
+        if (!token) {
+          toast.error("Login required");
+          return;
+        }
+        const savedProduct = await createProduct(product, token);
 
         setState((prev) => ({
           ...prev,
@@ -340,11 +345,14 @@ const addProduct = async (product: Omit<Product, 'id'>) => {
 
   const updateProduct = async (product: Product) => {
   try {
-    const updatedProduct = await updateProductApi(
-      product.id,
-      product
-    );
+    const token = localStorage.getItem("token");
 
+    if (!token) {
+      toast.error("Login required");
+      return;
+    }
+
+    const updatedProduct = await updateProductApi(product.id,product,token);
     setState((prev) => ({
       ...prev,
       products: prev.products.map((item) =>
@@ -366,12 +374,19 @@ const addProduct = async (product: Omit<Product, 'id'>) => {
 
   const deleteProduct = async (productId: string) => {
   try {
-    await deleteProductApi(productId);
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      toast.error("Login required");
+      return;
+    }
+
+    await deleteProductApi(productId, token);
 
     setState((prev) => ({
       ...prev,
       products: prev.products.filter(
-        (item) => item.id !== productId
+        (product) => product.id !== productId
       ),
     }));
 

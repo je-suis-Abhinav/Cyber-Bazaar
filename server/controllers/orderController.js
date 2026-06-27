@@ -31,8 +31,11 @@ const createOrder = async (req, res) => {
         const order = await Order.create({
             user:req.user.id,
             items: cart.items.map(item => ({
-                product:item.product._id,
-                quantity:item.quantity
+                product: item.product._id,
+                name: item.product.name,
+                image: item.product.image,
+                price: item.product.price,
+                quantity: item.quantity
             })),
             total:grandTotal,
             paymentStatus,

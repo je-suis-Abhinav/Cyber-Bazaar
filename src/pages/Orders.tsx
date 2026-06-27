@@ -5,11 +5,12 @@ import PageWrapper from "../components/PageWrapper";
 import "../styles/orders.css";
 
 type OrderItem = {
-  _id: string;
+  _id:string;
   quantity: number;
-  product: {
-    name: string;
-  };
+  product: string;
+  name: string;
+  image: string;
+  price: number;
 };
 
 type Order = {
@@ -165,7 +166,7 @@ function Orders() {
                     >
 
                       <span>
-                        {item.product.name}
+                        {item.name}
                       </span>
 
                       <strong>
