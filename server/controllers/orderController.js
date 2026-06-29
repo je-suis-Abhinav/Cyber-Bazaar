@@ -1,5 +1,6 @@
 const Order = require('../models/Order');
 const Cart = require('../models/Cart');
+const Product=require("../models/Product");
 const createOrder = async (req, res) => {
     try {
 
@@ -28,6 +29,26 @@ const createOrder = async (req, res) => {
         const gst = total * 0.18;
         const deliveryCharge =paymentMethod === "Cash On Delivery"? 50: 0;
         const grandTotal =total + gst + deliveryCharge;
+        for (const item of cart.items) {
+
+            const product = await Product.findById(item.product._id);
+
+            if (!product) {
+                return res.status(404).json({
+                    message: `${item.product.name} not found`
+                });
+            }
+
+            if (product.stock < item.quantity) {
+                return res.status(400).json({
+                    message: `${product.name} is out of stock`
+                });
+            }
+
+            product.stock -= item.quantity;
+
+            await product.save();
+        }
         const order = await Order.create({
             user:req.user.id,
             items: cart.items.map(item => ({
@@ -102,11 +123,28 @@ const updateOrderStatus = async (req, res) => {
 
         order.status = status;
         if (status === "Cancelled") {
-            if (order.paymentMethod === "Cash On Delivery") {
-                order.paymentStatus = "Cancelled";
-            } else {
-                order.paymentStatus = "Refunded";
+            for (const item of order.items) {
+
+                const product = await Product.findById(item.product);
+
+                if (product) {
+
+                    product.stock += item.quantity;
+
+                    await product.save();
+
+                }
             }
+
+        if (order.paymentMethod === "Cash On Delivery" && order.status === "Delivered") {
+                order.paymentStatus = "Refunded";
+        }
+        else if(order.paymentMethod==="Cash On Delivery"){
+            order.paymentStatus="Cancelled";
+        }
+        else{
+            order.paymentStatus="Refunded";
+        }
         }
         if (
             status === "Delivered" &&

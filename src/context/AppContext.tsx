@@ -64,6 +64,7 @@ interface AppContextValue extends AppState {
   logout: () => void;
   loadingProducts:boolean;
   reloadCart:()=>Promise<void>;
+  reloadProducts: () => Promise<void>;
   activities:Activity[];
   setActivities: React.Dispatch<React.SetStateAction<Activity[]>>;
 }
@@ -136,32 +137,31 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     await loadCart();
     await loadWishlist();
   };
-  useEffect(() => {
   const fetchProducts = async () => {
-    try {
-      const products = await getProducts();
-      setState((prev) => ({
-        ...prev,
-        products: products.map((p: any) => ({
-          id: p._id,
-          name: p.name,
-          description: p.description,
-          category: p.category,
-          price: p.price,
-          stock: p.stock,
-          rating: p.rating,
-          image: p.image,
-          tags: p.tags || [],
-        })),
-      }));
-    } catch (error) {
-      console.error('Failed to load products', error);
-    }
-    finally{
-      setLoadingProducts(false);
-    }
-  };
+  try {
+    const products = await getProducts();
 
+    setState(prev => ({
+      ...prev,
+      products: products.map((p: any) => ({
+        id: p._id,
+        name: p.name,
+        description: p.description,
+        category: p.category,
+        price: p.price,
+        stock: p.stock,
+        rating: p.rating,
+        image: p.image,
+        tags: p.tags || [],
+      })),
+    }));
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setLoadingProducts(false);
+  }
+};
+useEffect(() => {
   fetchProducts();
 }, []);
 
@@ -417,6 +417,7 @@ const addProduct = async (product: Omit<Product, 'id'>) => {
       switchPage,
       loadingProducts,
       reloadCart:loadCart,
+      reloadProducts:fetchProducts,
       activities,
       setActivities,
     }),

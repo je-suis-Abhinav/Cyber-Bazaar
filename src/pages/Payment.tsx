@@ -10,7 +10,7 @@ import {CreditCard,Smartphone,Building2,Wallet,} from "lucide-react";
 import confetti from "canvas-confetti";
 
 function Payment() {
-  const { cart,products,reloadCart } = useAppContext();
+  const { cart,products,reloadCart,reloadProducts } = useAppContext();
   const [name, setName] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("Credit Card");
   const [bank, setBank] = useState("SBI");
@@ -106,6 +106,7 @@ function Payment() {
         token
       );
       await reloadCart();
+      await reloadProducts();
       if(paymentMethod==="Cash On Delivery"){
         launchConfetti();
         toast.success("Order placed successfully!📦");
